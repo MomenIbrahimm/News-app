@@ -20,7 +20,7 @@ class EgyBusinessScreen extends StatelessWidget {
           backgroundColor: NewsCubit.get(context).isSwitch ? b : w,
           appBar: AppBar(
             title: const Text(
-              'أخبار الأعمال مصرية',
+              'أخبار الأعمال المصرية',
               style: TextStyle(color: Colors.black,fontSize: 18.0),
             ),
             backgroundColor: NewsCubit.get(context).isSwitch ? b : w,
