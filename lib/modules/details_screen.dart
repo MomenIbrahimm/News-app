@@ -5,7 +5,6 @@ import 'package:news_app/layout/cubit.dart';
 import 'package:news_app/layout/state.dart';
 import 'package:news_app/modules/webview_screen.dart';
 import 'package:news_app/share/components/components.dart';
-
 import '../share/style/const.dart';
 
 class DetailsScreen extends StatelessWidget {

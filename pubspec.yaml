@@ -36,12 +36,16 @@ dependencies:
   flutter_toggle_tab: ^1.2.0
   google_fonts: ^4.0.3
   ionicons: ^0.2.2
-  dio: ^5.0.2
+  dio:
   buildcondition: ^0.0.4
   shared_preferences: ^2.0.18
   webview_flutter: ^2.0.3
   smooth_page_indicator: ^1.0.1
   onboarding: ^3.1.0
+  dio_http_cache: ^0.3.0
+  cached_network_image: ^3.2.3
+  flutter_cache_manager: ^3.3.0
+  flutter_offline: ^2.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -75,6 +79,7 @@ flutter:
     - assets/image1.jpg
     - assets/image2.jpg
     - assets/images.png
+    - assets/offlineImage.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

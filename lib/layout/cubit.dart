@@ -1,11 +1,14 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
+import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/layout/state.dart';
 import 'package:news_app/modules/us_news/business_screen.dart';
 import 'package:news_app/modules/us_news/science_screen.dart';
 import 'package:news_app/modules/us_news/sport_screen.dart';
-
 import '../modules/search_screen.dart';
 import '../share/network/remote/cache_helper.dart';
 import '../share/network/remote/dio_helper.dart';
@@ -32,7 +35,6 @@ bool isSwitch = false;
        isSwitch = !isSwitch;
        CacheHelper.setData(key: 'isSwitch', value: isSwitch).then((value){
          emit(SwitchState());
-         print(isSwitch);
        });
      }
 
@@ -54,17 +56,20 @@ bool isSwitch = false;
    }
 
   List<dynamic> business = [];
-  void getBusinessData() {
+  void getBusinessData({page}) {
 
     emit(GetBusinessDataLoadingState());
 
-        DioHelper.getData(url: 'v2/top-headlines', query: {
+    DioCacheManager dioCacheManager = DioCacheManager(CacheConfig());
+    Options myOption = buildCacheOptions(const Duration(days: 30),forceRefresh:  true);
+    DioHelper.dio.interceptors.add(dioCacheManager.interceptor);
+
+        DioHelper.getData(url: 'v2/top-headlines',options: myOption, query: {
           'category': 'business',
           'country':'us',
-          'apiKey': 'da2217f76a4b4a499b2d4a56efedd6e5'
+          'apiKey': 'da2217f76a4b4a499b2d4a56efedd6e5',
         }).then((value) {
           business = value.data['articles'];
-          print(business[0]);
           emit(GetBusinessDataSuccessState());
         }).catchError((error) {
           print(error.toString());
@@ -76,8 +81,11 @@ bool isSwitch = false;
   void getEgyBusinessData() {
 
     emit(GetEgyBusinessDataLoadingState());
+    DioCacheManager dioCacheManager = DioCacheManager(CacheConfig());
+    Options myOption = buildCacheOptions(const Duration(days: 30),forceRefresh:  true);
+    DioHelper.dio.interceptors.add(dioCacheManager.interceptor);
 
-        DioHelper.getData(url: 'v2/top-headlines', query: {
+        DioHelper.getData(url: 'v2/top-headlines',options: myOption, query: {
           'category': 'business',
           'country':'eg',
           'apiKey': 'da2217f76a4b4a499b2d4a56efedd6e5'
@@ -95,13 +103,16 @@ bool isSwitch = false;
 
     emit(GetSportsDataLoadingState());
 
-    DioHelper.getData(url: 'v2/top-headlines', query: {
+    DioCacheManager dioCacheManager = DioCacheManager(CacheConfig());
+    Options myOption = buildCacheOptions(const Duration(days: 30),forceRefresh:  true);
+    DioHelper.dio.interceptors.add(dioCacheManager.interceptor);
+
+    DioHelper.getData(url: 'v2/top-headlines',options: myOption, query: {
       'category': 'sports',
       'country': 'us',
       'apiKey': 'da2217f76a4b4a499b2d4a56efedd6e5'
     }).then((value) {
       sports = value.data['articles'];
-      print(sports.toString());
       emit(GetSportsDataSuccessState());
     }).catchError((error) {
       print(error.toString());
@@ -114,13 +125,16 @@ bool isSwitch = false;
 
     emit(GetEgySportsDataLoadingState());
 
-    DioHelper.getData(url: 'v2/top-headlines', query: {
+    DioCacheManager dioCacheManager = DioCacheManager(CacheConfig());
+    Options myOption = buildCacheOptions(const Duration(days: 30),forceRefresh:  true);
+    DioHelper.dio.interceptors.add(dioCacheManager.interceptor);
+
+    DioHelper.getData(url: 'v2/top-headlines',options:myOption, query: {
       'category': 'sports',
       'country': 'eg',
       'apiKey': 'da2217f76a4b4a499b2d4a56efedd6e5'
     }).then((value) {
       egySports = value.data['articles'];
-      print(sports.toString());
       emit(GetEgySportsDataSuccessState());
     }).catchError((error) {
       print(error.toString());
@@ -130,10 +144,16 @@ bool isSwitch = false;
 
   List<dynamic> science =[];
   void getScienceData(){
+
     emit(GetScienceDataLoadingState());
+
+    DioCacheManager dioCacheManager = DioCacheManager(CacheConfig());
+    Options myOption = buildCacheOptions(const Duration(days: 30),forceRefresh:  true);
+    DioHelper.dio.interceptors.add(dioCacheManager.interceptor);
 
     DioHelper.getData(
         url: 'v2/top-headlines',
+        options: myOption,
         query: {
           'category':'science',
           'country':'us',
@@ -152,8 +172,13 @@ bool isSwitch = false;
   void getEgyScienceData(){
     emit(GetEgyScienceDataLoadingState());
 
+    DioCacheManager dioCacheManager = DioCacheManager(CacheConfig());
+    Options myOption = buildCacheOptions(const Duration(days: 30),forceRefresh:  true);
+    DioHelper.dio.interceptors.add(dioCacheManager.interceptor);
+
     DioHelper.getData(
         url: 'v2/top-headlines',
+        options: myOption,
         query: {
           'category':'science',
           'country':'eg',
@@ -170,23 +195,39 @@ bool isSwitch = false;
 
   List<dynamic> search = [];
 
-  void getSearchData({String? value}){
+  void getSearchData({String? value})async{
     emit(GetSearchDataLoadingState());
     search =[];
 
-    DioHelper.getData(
-      url: 'v2/everything',
-      query: {
-        'q':value,
-        'apiKey':'da2217f76a4b4a499b2d4a56efedd6e5',
-      },
-    ).then((value){
-      search = value.data['articles'];
+    try{
+    var response = await  DioHelper.getData(
+        url: 'v2/everything',
+        query: {
+          'q':value,
+          'apiKey':'da2217f76a4b4a499b2d4a56efedd6e5',
+        },
+      );
+      search = response.data['articles'];
       emit(GetSearchDataSuccessState());
-    }).catchError((error){
-      print(error.toString());
-      emit(GetSearchDataErrorState(error.toString()));
-    });
+    }on SocketException catch(e){
+      print('net error');
+      emit(GetSearchDataErrorState(e.toString()));
+
+    }
+
+    // DioHelper.getData(
+    //   url: 'v2/everything',
+    //   query: {
+    //     'q':value,
+    //     'apiKey':'da2217f76a4b4a499b2d4a56efedd6e5',
+    //   },
+    // ).then((value){
+    //   search = value.data['articles'];
+    //   emit(GetSearchDataSuccessState());
+    // }).catchError((error){
+    //   print(error.toString());
+    //   emit(GetSearchDataErrorState(error.toString()));
+    // });
   }
 
 }

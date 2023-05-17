@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:news_app/modules/details_screen.dart';
 import 'package:news_app/share/style/style.dart';
@@ -6,7 +8,7 @@ import 'package:news_app/share/style/style.dart';
 int currentIndex = 1;
 
 Widget defaultTab({required IconData icon, required String text}) {
-  return Tab(icon: Icon(icon), text: text, height: 55);
+  return Tab(icon: Icon(icon), text: text, height: 70);
 }
 
 Widget switchTab() {
@@ -47,9 +49,23 @@ Widget buildArticlesItem(article, context, {String text = 'details'}) {
           ],
         ),
       ),
-      Image(
-          image: NetworkImage(
-              '${article['urlToImage'] ?? 'https://media.istockphoto.com/id/1390033645/photo/world-news-background-which-can-be-used-for-broadcast-news.jpg?b=1&s=170667a&w=0&k=20&c=glqFWZtWU4Zqyxd8CRu5_Or81zqwe7cyhturXaIFEOA='}')),
+      CachedNetworkImage(
+        placeholder: (context,url)=> const Center(child: CircularProgressIndicator()),
+          errorWidget: (context,url,error)=>  Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text('Failed to load image check your internet',style: TextStyle(fontSize: 12.0,color: Colors.red),),
+              Icon(Icons.error,size: 25.0,color: Colors.red,)
+            ],
+          ),
+          cacheManager: CacheManager(
+            Config(
+              'customCacheKey',
+              stalePeriod: const Duration(days: 7),
+            ),
+          ),
+          imageUrl:
+              '${article['urlToImage'] ?? 'https://media.istockphoto.com/id/1390033645/photo/world-news-background-which-can-be-used-for-broadcast-news.jpg?b=1&s=170667a&w=0&k=20&c=glqFWZtWU4Zqyxd8CRu5_Or81zqwe7cyhturXaIFEOA='}'),
       const SizedBox(
         height: 5.0,
       ),
@@ -65,9 +81,11 @@ Widget buildArticlesItem(article, context, {String text = 'details'}) {
               width: 5.0,
             ),
             SizedBox(
-                width: 50,
-                height: 50.0,
-                child: FloatingActionButton(
+                width: 80,
+                height: 30.0,
+                child: MaterialButton(
+                  elevation: 5.0,
+                  color: Colors.blueGrey,
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -82,7 +100,7 @@ Widget buildArticlesItem(article, context, {String text = 'details'}) {
                                   image: article['urlToImage'],
                                 )));
                   },
-                  child: Text(text),
+                  child: Text(text,style: const TextStyle(color: Colors.white),),
                 )),
           ],
         ),
