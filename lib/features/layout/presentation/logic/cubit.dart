@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/features/business/presentation/screens/business_screen.dart';
@@ -7,20 +5,19 @@ import 'package:news_app/features/layout/presentation/logic/state.dart';
 import 'package:news_app/features/science/presentation/screens/science_screen.dart';
 import 'package:news_app/features/sports/presentation/screens/sport_screen.dart';
 
-import '../../../../modules/search_screen.dart';
-import '../../../../share/network/remote/cache_helper.dart';
-import '../../../../share/network/remote/dio_helper.dart';
+import '../../../../core/local_cache/cache_helper.dart';
+import '../../../search/presentation/screens/search_screen.dart';
 
-class NewsCubit extends Cubit<NewsState> {
-  NewsCubit() : super(InitialState());
+class AppCubit extends Cubit<AppState> {
+  AppCubit() : super(InitialState());
 
-  static NewsCubit get(context) => BlocProvider.of(context);
+  static AppCubit get(context) => BlocProvider.of(context);
 
   List<Widget> screens = [
     const BusinessScreen(),
     const SportsScreen(),
     const ScienceScreen(),
-    SearchScreen(),
+    const SearchScreen(),
   ];
 
   bool isSwitch = false;
@@ -41,88 +38,5 @@ class NewsCubit extends Cubit<NewsState> {
   void changeBottomNav(int index) {
     currentIndex = index;
     emit(ChangeBottomNav());
-  }
-
-  bool isTogel = false;
-
-  void togelTab() {
-    isTogel = !isTogel;
-    emit(TogleState());
-  }
-
-  List<dynamic> science = [];
-  void getScienceData() {
-    emit(GetScienceDataLoadingState());
-
-    DioHelper.getData(
-      url: 'v2/top-headlines',
-      query: {
-        'category': 'science',
-        'country': 'us',
-        'apiKey': 'da2217f76a4b4a499b2d4a56efedd6e5',
-      },
-    ).then((value) {
-      science = value.data['articles'];
-      emit(GetScienceDataSuccessState());
-    }).catchError((error) {
-      print(error.toString());
-      emit(GetScienceDataErrorState(error.toString()));
-    });
-  }
-
-  List<dynamic> egyScience = [];
-  void getEgyScienceData() {
-    emit(GetEgyScienceDataLoadingState());
-
-    DioHelper.getData(
-      url: 'v2/top-headlines',
-      query: {
-        'category': 'science',
-        'country': 'eg',
-        'apiKey': 'da2217f76a4b4a499b2d4a56efedd6e5',
-      },
-    ).then((value) {
-      egyScience = value.data['articles'];
-      emit(GetEgyScienceDataSuccessState());
-    }).catchError((error) {
-      print(error.toString());
-      emit(GetEgyScienceDataErrorState(error.toString()));
-    });
-  }
-
-  List<dynamic> search = [];
-
-  void getSearchData({String? value}) async {
-    emit(GetSearchDataLoadingState());
-    search = [];
-
-    try {
-      var response = await DioHelper.getData(
-        url: 'v2/everything',
-        query: {
-          'q': value,
-          'apiKey': 'da2217f76a4b4a499b2d4a56efedd6e5',
-        },
-      );
-      search = response.data['articles'];
-      emit(GetSearchDataSuccessState());
-    } on SocketException catch (e) {
-      print('net error');
-      emit(GetSearchDataErrorState(e.toString()));
-    }
-
-    // DioHelper.getData(
-    //   url: 'v2/everything',
-    //   query: {
-    //     'q':value,
-    //     'apiKey':'da2217f76a4b4a499b2d4a56efedd6e5',
-    //   },
-    // ).then((value){
-    //   search = value.data['articles'];
-    //   emit(GetSearchDataSuccessState());
-    // }).catchError((error){
-    //   print(error.toString());
-    //   emit(GetSearchDataErrorState(error.toString()));
-    // });
   }
 }

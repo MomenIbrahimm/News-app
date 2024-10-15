@@ -1,66 +1,66 @@
 import 'package:flutter/material.dart';
-
-import '../../share/components/components.dart';
+import 'package:news_app/core/helpers/spacing.dart';
 
 class ArticleLoadingItem extends StatelessWidget {
   const ArticleLoadingItem({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: 3,
-      itemBuilder: (context, index) => Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                    child: Text(
-                  '',
-                  maxLines: 1,
-                )),
-                Spacer(),
-                Text(''),
-              ],
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 200,
-            color: Colors.grey.withOpacity(0.3),
-          ),
-          const SizedBox(
-            height: 5.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14.0),
-            child: Row(
-              children: [
-                const Expanded(
-                  child: Text(''),
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+      itemCount: 4,
+      itemBuilder: (context, index) => Card(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            children: [
+              customLoadingContainer(
+                height: 200,
+                width: double.infinity,
+              ),
+              verticalSpace(5),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    customLoadingContainer(),
+                    const Spacer(),
+                    customLoadingContainer(),
+                  ],
                 ),
-                const SizedBox(
-                  width: 5.0,
+              ),
+              customLoadingContainer(),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: customLoadingContainer(),
+                    ),
+                    const SizedBox(
+                      width: 5.0,
+                    ),
+                    customLoadingContainer(height: 40),
+                  ],
                 ),
-                SizedBox(
-                    width: 80,
-                    height: 30.0,
-                    child: MaterialButton(
-                      elevation: 5.0,
-                      color: Colors.blueGrey,
-                      onPressed: () {},
-                      child: const Text(
-                        "",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    )),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
-      separatorBuilder: (context, index) => myDivider(),
+    );
+  }
+
+  customLoadingContainer({double? height, double? width}) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(0.3),
+          borderRadius: BorderRadius.circular(6)),
+      height: height ?? 15,
+      width: width ?? 100,
     );
   }
 }

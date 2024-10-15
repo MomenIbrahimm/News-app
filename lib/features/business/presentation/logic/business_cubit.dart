@@ -6,7 +6,7 @@ class BusinessCubit extends Cubit<BusinessStates> {
   final BusinessRepo businessRepo;
   BusinessCubit(this.businessRepo) : super(const BusinessStates.initial());
 
-  void getBusinessData() async {
+  Future<void> getBusinessData() async {
     emit(const BusinessStates.loading());
 
     final result = await businessRepo.getBusinessData();
