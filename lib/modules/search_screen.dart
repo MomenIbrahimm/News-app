@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:news_app/core/widgets/article_item.dart';
 import 'package:news_app/share/components/components.dart';
 
 import '../features/layout/presentation/logic/cubit.dart';
@@ -64,7 +65,7 @@ class SearchScreen extends StatelessWidget {
                       condition: state is! GetSearchDataLoadingState,
                       builder: (context) => ListView.separated(
                           itemBuilder: (context, index) =>
-                              buildArticlesItem(list[index], context),
+                              ArticleItem(model: list[index]),
                           separatorBuilder: (context, index) => myDivider(),
                           itemCount: list.length),
                       fallback: (context) =>

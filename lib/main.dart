@@ -46,13 +46,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (BuildContext context) {
-            return NewsCubit()
-              ..getSportsData()
-              ..getScienceData()
-              ..switchButton(fromShared: isSwitch)
-              ..getEgyBusinessData()
-              ..getEgySportsData()
-              ..getEgyScienceData();
+            return NewsCubit()..switchButton(fromShared: isSwitch);
           },
         ),
       ],

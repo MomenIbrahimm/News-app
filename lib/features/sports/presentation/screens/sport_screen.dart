@@ -1,47 +1,33 @@
-import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/share/components/components.dart';
+import 'package:news_app/core/widgets/article_loading_item.dart';
+import 'package:news_app/features/sports/presentation/screens/widgets/sports_listview.dart';
 
-import '../../../layout/presentation/logic/cubit.dart';
-import '../../../layout/presentation/logic/state.dart';
+import '../logic/sports_cubit.dart';
+import '../logic/sports_states.dart';
 
 class SportsScreen extends StatelessWidget {
   const SportsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var list = NewsCubit.get(context).sports;
-
-    return BlocConsumer<NewsCubit, NewsState>(
-      listener: (context, state) {},
+    return BlocBuilder<SportsCubit, SportsStates>(
+      buildWhen: (previous, current) =>
+          State is! Loading || State is Loaded || State is Error,
       builder: (context, state) {
-        return BuildCondition(
-          condition: state is! GetSportsDataLoadingState,
-          builder: (context) => Column(
-            children: [
-              Expanded(
-                child: ListView.separated(
-                  itemCount: list.length,
-                  itemBuilder: (context, index) =>
-                      buildArticlesItem(list[index], context),
-                  separatorBuilder: (context, index) => myDivider(),
-                ),
-              ),
-              MaterialButton(
-                onPressed: () {
-                  /*  Navigator.push(context, MaterialPageRoute(builder: (context)=>const EgySportsScreen()));*/
-                },
-                color: Colors.blueGrey,
-                child: const Text(
-                  'أخبار مصرية',
-                  style: TextStyle(color: Colors.white),
-                ),
-              )
-            ],
-          ),
-          fallback: (context) =>
-              const Center(child: CircularProgressIndicator()),
+        return state.maybeWhen(
+          loading: () {
+            return const ArticleLoadingItem();
+          },
+          error: (error) {
+            return Center(
+              child: Text(error),
+            );
+          },
+          loaded: (sportsModel) {
+            return SportsListview(sportsModel: sportsModel);
+          },
+          orElse: () => const SizedBox.shrink(),
         );
       },
     );

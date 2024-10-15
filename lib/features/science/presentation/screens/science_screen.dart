@@ -1,6 +1,7 @@
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/core/widgets/article_item.dart';
 
 import '../../../../share/components/components.dart';
 import '../../../layout/presentation/logic/cubit.dart';
@@ -24,7 +25,7 @@ class ScienceScreen extends StatelessWidget {
                 child: ListView.separated(
                   itemCount: list.length,
                   itemBuilder: (context, index) =>
-                      buildArticlesItem(list[index], context),
+                      ArticleItem(model: list[index]),
                   separatorBuilder: (context, index) => myDivider(),
                 ),
               ),

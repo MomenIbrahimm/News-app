@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'business_state.dart';
+part of 'sports_states.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$BusinessStates<T> {
+mixin _$SportsStates {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(NewsModel businessModel) loaded,
+    required TResult Function(NewsModel sportsModel) loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$BusinessStates<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(NewsModel businessModel)? loaded,
+    TResult? Function(NewsModel sportsModel)? loaded,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,92 +36,92 @@ mixin _$BusinessStates<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(NewsModel businessModel)? loaded,
+    TResult Function(NewsModel sportsModel)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(Loading<T> value) loading,
-    required TResult Function(Success<T> value) loaded,
-    required TResult Function(Error<T> value) error,
+    required TResult Function(_initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(Loading<T> value)? loading,
-    TResult? Function(Success<T> value)? loaded,
-    TResult? Function(Error<T> value)? error,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Success<T> value)? loaded,
-    TResult Function(Error<T> value)? error,
+    TResult Function(_initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BusinessStatesCopyWith<T, $Res> {
-  factory $BusinessStatesCopyWith(
-          BusinessStates<T> value, $Res Function(BusinessStates<T>) then) =
-      _$BusinessStatesCopyWithImpl<T, $Res, BusinessStates<T>>;
+abstract class $SportsStatesCopyWith<$Res> {
+  factory $SportsStatesCopyWith(
+          SportsStates value, $Res Function(SportsStates) then) =
+      _$SportsStatesCopyWithImpl<$Res, SportsStates>;
 }
 
 /// @nodoc
-class _$BusinessStatesCopyWithImpl<T, $Res, $Val extends BusinessStates<T>>
-    implements $BusinessStatesCopyWith<T, $Res> {
-  _$BusinessStatesCopyWithImpl(this._value, this._then);
+class _$SportsStatesCopyWithImpl<$Res, $Val extends SportsStates>
+    implements $SportsStatesCopyWith<$Res> {
+  _$SportsStatesCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of BusinessStates
+  /// Create a copy of SportsStates
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<T, $Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl<T> value, $Res Function(_$InitialImpl<T>) then) =
-      __$$InitialImplCopyWithImpl<T, $Res>;
+abstract class _$$initialImplCopyWith<$Res> {
+  factory _$$initialImplCopyWith(
+          _$initialImpl value, $Res Function(_$initialImpl) then) =
+      __$$initialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<T, $Res>
-    extends _$BusinessStatesCopyWithImpl<T, $Res, _$InitialImpl<T>>
-    implements _$$InitialImplCopyWith<T, $Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl<T> _value, $Res Function(_$InitialImpl<T>) _then)
+class __$$initialImplCopyWithImpl<$Res>
+    extends _$SportsStatesCopyWithImpl<$Res, _$initialImpl>
+    implements _$$initialImplCopyWith<$Res> {
+  __$$initialImplCopyWithImpl(
+      _$initialImpl _value, $Res Function(_$initialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BusinessStates
+  /// Create a copy of SportsStates
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$InitialImpl<T> implements _Initial<T> {
-  const _$InitialImpl();
+class _$initialImpl implements _initial {
+  const _$initialImpl();
 
   @override
   String toString() {
-    return 'BusinessStates<$T>.initial()';
+    return 'SportsStates.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl<T>);
+        (other.runtimeType == runtimeType && other is _$initialImpl);
   }
 
   @override
@@ -132,7 +132,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(NewsModel businessModel) loaded,
+    required TResult Function(NewsModel sportsModel) loaded,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -143,7 +143,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(NewsModel businessModel)? loaded,
+    TResult? Function(NewsModel sportsModel)? loaded,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -154,7 +154,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(NewsModel businessModel)? loaded,
+    TResult Function(NewsModel sportsModel)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -167,10 +167,10 @@ class _$InitialImpl<T> implements _Initial<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(Loading<T> value) loading,
-    required TResult Function(Success<T> value) loaded,
-    required TResult Function(Error<T> value) error,
+    required TResult Function(_initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(Error value) error,
   }) {
     return initial(this);
   }
@@ -178,10 +178,10 @@ class _$InitialImpl<T> implements _Initial<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(Loading<T> value)? loading,
-    TResult? Function(Success<T> value)? loaded,
-    TResult? Function(Error<T> value)? error,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -189,10 +189,10 @@ class _$InitialImpl<T> implements _Initial<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Success<T> value)? loaded,
-    TResult Function(Error<T> value)? error,
+    TResult Function(_initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -202,43 +202,43 @@ class _$InitialImpl<T> implements _Initial<T> {
   }
 }
 
-abstract class _Initial<T> implements BusinessStates<T> {
-  const factory _Initial() = _$InitialImpl<T>;
+abstract class _initial implements SportsStates {
+  const factory _initial() = _$initialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<T, $Res> {
+abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-          _$LoadingImpl<T> value, $Res Function(_$LoadingImpl<T>) then) =
-      __$$LoadingImplCopyWithImpl<T, $Res>;
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<T, $Res>
-    extends _$BusinessStatesCopyWithImpl<T, $Res, _$LoadingImpl<T>>
-    implements _$$LoadingImplCopyWith<T, $Res> {
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$SportsStatesCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl<T> _value, $Res Function(_$LoadingImpl<T>) _then)
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BusinessStates
+  /// Create a copy of SportsStates
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$LoadingImpl<T> implements Loading<T> {
+class _$LoadingImpl implements Loading {
   const _$LoadingImpl();
 
   @override
   String toString() {
-    return 'BusinessStates<$T>.loading()';
+    return 'SportsStates.loading()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl<T>);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -249,7 +249,7 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(NewsModel businessModel) loaded,
+    required TResult Function(NewsModel sportsModel) loaded,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -260,7 +260,7 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(NewsModel businessModel)? loaded,
+    TResult? Function(NewsModel sportsModel)? loaded,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -271,7 +271,7 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(NewsModel businessModel)? loaded,
+    TResult Function(NewsModel sportsModel)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -284,10 +284,10 @@ class _$LoadingImpl<T> implements Loading<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(Loading<T> value) loading,
-    required TResult Function(Success<T> value) loaded,
-    required TResult Function(Error<T> value) error,
+    required TResult Function(_initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(Error value) error,
   }) {
     return loading(this);
   }
@@ -295,10 +295,10 @@ class _$LoadingImpl<T> implements Loading<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(Loading<T> value)? loading,
-    TResult? Function(Success<T> value)? loaded,
-    TResult? Function(Error<T> value)? error,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -306,10 +306,10 @@ class _$LoadingImpl<T> implements Loading<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Success<T> value)? loaded,
-    TResult Function(Error<T> value)? error,
+    TResult Function(_initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -319,38 +319,38 @@ class _$LoadingImpl<T> implements Loading<T> {
   }
 }
 
-abstract class Loading<T> implements BusinessStates<T> {
-  const factory Loading() = _$LoadingImpl<T>;
+abstract class Loading implements SportsStates {
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<T, $Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl<T> value, $Res Function(_$SuccessImpl<T>) then) =
-      __$$SuccessImplCopyWithImpl<T, $Res>;
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({NewsModel businessModel});
+  $Res call({NewsModel sportsModel});
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<T, $Res>
-    extends _$BusinessStatesCopyWithImpl<T, $Res, _$SuccessImpl<T>>
-    implements _$$SuccessImplCopyWith<T, $Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl<T> _value, $Res Function(_$SuccessImpl<T>) _then)
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$SportsStatesCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BusinessStates
+  /// Create a copy of SportsStates
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? businessModel = null,
+    Object? sportsModel = null,
   }) {
-    return _then(_$SuccessImpl<T>(
-      null == businessModel
-          ? _value.businessModel
-          : businessModel // ignore: cast_nullable_to_non_nullable
+    return _then(_$LoadedImpl(
+      null == sportsModel
+          ? _value.sportsModel
+          : sportsModel // ignore: cast_nullable_to_non_nullable
               as NewsModel,
     ));
   }
@@ -358,46 +358,46 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$SuccessImpl<T> implements Success<T> {
-  const _$SuccessImpl(this.businessModel);
+class _$LoadedImpl implements Loaded {
+  const _$LoadedImpl(this.sportsModel);
 
   @override
-  final NewsModel businessModel;
+  final NewsModel sportsModel;
 
   @override
   String toString() {
-    return 'BusinessStates<$T>.loaded(businessModel: $businessModel)';
+    return 'SportsStates.loaded(sportsModel: $sportsModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl<T> &&
-            (identical(other.businessModel, businessModel) ||
-                other.businessModel == businessModel));
+            other is _$LoadedImpl &&
+            (identical(other.sportsModel, sportsModel) ||
+                other.sportsModel == sportsModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, businessModel);
+  int get hashCode => Object.hash(runtimeType, sportsModel);
 
-  /// Create a copy of BusinessStates
+  /// Create a copy of SportsStates
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
-      __$$SuccessImplCopyWithImpl<T, _$SuccessImpl<T>>(this, _$identity);
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(NewsModel businessModel) loaded,
+    required TResult Function(NewsModel sportsModel) loaded,
     required TResult Function(String error) error,
   }) {
-    return loaded(businessModel);
+    return loaded(sportsModel);
   }
 
   @override
@@ -405,10 +405,10 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(NewsModel businessModel)? loaded,
+    TResult? Function(NewsModel sportsModel)? loaded,
     TResult? Function(String error)? error,
   }) {
-    return loaded?.call(businessModel);
+    return loaded?.call(sportsModel);
   }
 
   @override
@@ -416,12 +416,12 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(NewsModel businessModel)? loaded,
+    TResult Function(NewsModel sportsModel)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(businessModel);
+      return loaded(sportsModel);
     }
     return orElse();
   }
@@ -429,10 +429,10 @@ class _$SuccessImpl<T> implements Success<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(Loading<T> value) loading,
-    required TResult Function(Success<T> value) loaded,
-    required TResult Function(Error<T> value) error,
+    required TResult Function(_initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(Error value) error,
   }) {
     return loaded(this);
   }
@@ -440,10 +440,10 @@ class _$SuccessImpl<T> implements Success<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(Loading<T> value)? loading,
-    TResult? Function(Success<T> value)? loaded,
-    TResult? Function(Error<T> value)? error,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(Error value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -451,10 +451,10 @@ class _$SuccessImpl<T> implements Success<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Success<T> value)? loaded,
-    TResult Function(Error<T> value)? error,
+    TResult Function(_initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -464,43 +464,43 @@ class _$SuccessImpl<T> implements Success<T> {
   }
 }
 
-abstract class Success<T> implements BusinessStates<T> {
-  const factory Success(final NewsModel businessModel) = _$SuccessImpl<T>;
+abstract class Loaded implements SportsStates {
+  const factory Loaded(final NewsModel sportsModel) = _$LoadedImpl;
 
-  NewsModel get businessModel;
+  NewsModel get sportsModel;
 
-  /// Create a copy of BusinessStates
+  /// Create a copy of SportsStates
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<T, $Res> {
+abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-          _$ErrorImpl<T> value, $Res Function(_$ErrorImpl<T>) then) =
-      __$$ErrorImplCopyWithImpl<T, $Res>;
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<T, $Res>
-    extends _$BusinessStatesCopyWithImpl<T, $Res, _$ErrorImpl<T>>
-    implements _$$ErrorImplCopyWith<T, $Res> {
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$SportsStatesCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl<T> _value, $Res Function(_$ErrorImpl<T>) _then)
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BusinessStates
+  /// Create a copy of SportsStates
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$ErrorImpl<T>(
+    return _then(_$ErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -511,7 +511,7 @@ class __$$ErrorImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ErrorImpl<T> implements Error<T> {
+class _$ErrorImpl implements Error {
   const _$ErrorImpl({required this.error});
 
   @override
@@ -519,34 +519,34 @@ class _$ErrorImpl<T> implements Error<T> {
 
   @override
   String toString() {
-    return 'BusinessStates<$T>.error(error: $error)';
+    return 'SportsStates.error(error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl<T> &&
+            other is _$ErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  /// Create a copy of BusinessStates
+  /// Create a copy of SportsStates
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
-      __$$ErrorImplCopyWithImpl<T, _$ErrorImpl<T>>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(NewsModel businessModel) loaded,
+    required TResult Function(NewsModel sportsModel) loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -557,7 +557,7 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(NewsModel businessModel)? loaded,
+    TResult? Function(NewsModel sportsModel)? loaded,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -568,7 +568,7 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(NewsModel businessModel)? loaded,
+    TResult Function(NewsModel sportsModel)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -581,10 +581,10 @@ class _$ErrorImpl<T> implements Error<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(Loading<T> value) loading,
-    required TResult Function(Success<T> value) loaded,
-    required TResult Function(Error<T> value) error,
+    required TResult Function(_initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(Error value) error,
   }) {
     return error(this);
   }
@@ -592,10 +592,10 @@ class _$ErrorImpl<T> implements Error<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(Loading<T> value)? loading,
-    TResult? Function(Success<T> value)? loaded,
-    TResult? Function(Error<T> value)? error,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(Error value)? error,
   }) {
     return error?.call(this);
   }
@@ -603,10 +603,10 @@ class _$ErrorImpl<T> implements Error<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Success<T> value)? loaded,
-    TResult Function(Error<T> value)? error,
+    TResult Function(_initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -616,14 +616,14 @@ class _$ErrorImpl<T> implements Error<T> {
   }
 }
 
-abstract class Error<T> implements BusinessStates<T> {
-  const factory Error({required final String error}) = _$ErrorImpl<T>;
+abstract class Error implements SportsStates {
+  const factory Error({required final String error}) = _$ErrorImpl;
 
   String get error;
 
-  /// Create a copy of BusinessStates
+  /// Create a copy of SportsStates
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

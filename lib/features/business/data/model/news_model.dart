@@ -1,11 +1,11 @@
-class BusinessModel {
-  BusinessModel({
+class NewsModel {
+  NewsModel({
     this.status,
     this.totalResults,
     this.articles,
   });
 
-  BusinessModel.fromJson(dynamic json) {
+  NewsModel.fromJson(dynamic json) {
     status = json['status'];
     totalResults = json['totalResults'];
     if (json['articles'] != null) {
