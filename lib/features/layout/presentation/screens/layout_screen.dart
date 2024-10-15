@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:news_app/layout/cubit.dart';
-import 'package:news_app/layout/state.dart';
 import 'package:news_app/share/components/components.dart';
-import 'package:news_app/share/network/remote/cache_helper.dart';
 import 'package:news_app/share/style/style.dart';
-import '../share/style/const.dart';
+
+import '../../../../share/style/const.dart';
+import '../logic/cubit.dart';
+import '../logic/state.dart';
 
 class LayoutScreen extends StatelessWidget {
   LayoutScreen({Key? key}) : super(key: key);

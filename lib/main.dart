@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:news_app/layout/cubit.dart';
-import 'package:news_app/layout/layout_screen.dart';
-import 'package:news_app/layout/state.dart';
-import 'package:news_app/modules/on_boarding_screen.dart';
+import 'package:news_app/features/onboarding/on_boarding_screen.dart';
 import 'package:news_app/share/bloc_observe.dart';
 import 'package:news_app/share/network/remote/cache_helper.dart';
 import 'package:news_app/share/network/remote/dio_helper.dart';
 
+import 'core/di/dependency_injection.dart';
+import 'features/layout/presentation/logic/cubit.dart';
+import 'features/layout/presentation/logic/state.dart';
+import 'features/layout/presentation/screens/layout_screen.dart';
+
 void main() async {
   WidgetsFlutterBinding();
+  getInit();
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
@@ -44,7 +47,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) {
             return NewsCubit()
-              ..getBusinessData()
               ..getSportsData()
               ..getScienceData()
               ..switchButton(fromShared: isSwitch)

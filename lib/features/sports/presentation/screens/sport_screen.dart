@@ -1,10 +1,10 @@
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/layout/cubit.dart';
-import 'package:news_app/layout/state.dart';
-import 'package:news_app/modules/egy_news/eg_sports.dart';
 import 'package:news_app/share/components/components.dart';
+
+import '../../../layout/presentation/logic/cubit.dart';
+import '../../../layout/presentation/logic/state.dart';
 
 class SportsScreen extends StatelessWidget {
   const SportsScreen({Key? key}) : super(key: key);
@@ -13,23 +13,24 @@ class SportsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var list = NewsCubit.get(context).sports;
 
-    return BlocConsumer<NewsCubit,NewsState>(
-      listener: (context,state){},
-      builder: (context,state){
+    return BlocConsumer<NewsCubit, NewsState>(
+      listener: (context, state) {},
+      builder: (context, state) {
         return BuildCondition(
-          condition: state is! GetSportsDataLoadingState ,
-          builder:(context)=>Column(
+          condition: state is! GetSportsDataLoadingState,
+          builder: (context) => Column(
             children: [
               Expanded(
                 child: ListView.separated(
                   itemCount: list.length,
-                  itemBuilder:(context,index)=>buildArticlesItem(list[index],context),
-                  separatorBuilder:(context,index)=>myDivider() ,
+                  itemBuilder: (context, index) =>
+                      buildArticlesItem(list[index], context),
+                  separatorBuilder: (context, index) => myDivider(),
                 ),
               ),
               MaterialButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const EgySportsScreen()));
+                  /*  Navigator.push(context, MaterialPageRoute(builder: (context)=>const EgySportsScreen()));*/
                 },
                 color: Colors.blueGrey,
                 child: const Text(
@@ -38,8 +39,9 @@ class SportsScreen extends StatelessWidget {
                 ),
               )
             ],
-          ) ,
-          fallback:(context)=>const Center(child: CircularProgressIndicator()) ,
+          ),
+          fallback: (context) =>
+              const Center(child: CircularProgressIndicator()),
         );
       },
     );

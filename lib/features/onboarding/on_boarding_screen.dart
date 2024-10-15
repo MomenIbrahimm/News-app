@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/layout/layout_screen.dart';
 import 'package:news_app/share/network/remote/cache_helper.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../models/on_boarding_model.dart';
+import '../../models/on_boarding_model.dart';
+import '../layout/presentation/screens/layout_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   OnBoardingScreen({Key? key}) : super(key: key);
@@ -118,7 +118,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => LayoutScreen()),
-                                        (route) => false);
+                                    (route) => false);
                               });
                             },
                             child: const Text(

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:news_app/layout/cubit.dart';
-import 'package:news_app/layout/state.dart';
 import 'package:news_app/modules/webview_screen.dart';
 import 'package:news_app/share/components/components.dart';
+
+import '../features/layout/presentation/logic/cubit.dart';
+import '../features/layout/presentation/logic/state.dart';
 import '../share/style/const.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -27,22 +28,22 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<NewsCubit,NewsState>(
-      listener:(context,state){},
-      builder:(context,state){
+    return BlocConsumer<NewsCubit, NewsState>(
+      listener: (context, state) {},
+      builder: (context, state) {
         return Scaffold(
-          backgroundColor: NewsCubit.get(context).isSwitch? b:w,
+          backgroundColor: NewsCubit.get(context).isSwitch ? b : w,
           appBar: AppBar(
             backgroundColor: NewsCubit.get(context).isSwitch ? b : w,
             iconTheme: NewsCubit.get(context).isSwitch
                 ? const IconThemeData(
-              color: Colors.black,
-            )
+                    color: Colors.black,
+                  )
                 : const IconThemeData(
-              color: Colors.white,
-            ),
+                    color: Colors.white,
+                  ),
             leading: IconButton(
-              color: NewsCubit.get(context).isSwitch? b:w,
+              color: NewsCubit.get(context).isSwitch ? b : w,
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -77,14 +78,16 @@ class DetailsScreen extends StatelessWidget {
                   defaultText(
                       author != null ? 'Author: $author' : 'Author: Unknown'),
                   defaultSizedBox(),
-                  defaultText(title != null ? 'Title: $title' : 'Title: Unknown'),
+                  defaultText(
+                      title != null ? 'Title: $title' : 'Title: Unknown'),
                   defaultSizedBox(),
                   defaultText(description != null
                       ? 'Description: $description'
                       : 'Description: Unknown'),
                   defaultSizedBox(),
-                  defaultText(
-                      content != null ? 'Content: $content' : 'Content: Unknown'),
+                  defaultText(content != null
+                      ? 'Content: $content'
+                      : 'Content: Unknown'),
                   defaultSizedBox(),
                   defaultText(publishDate != null
                       ? 'publishedAt: $publishDate'
@@ -93,10 +96,14 @@ class DetailsScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextButton(
-                      child: Text(   url != null
-                          ? 'This link will explain more details of this news if you want click on it: $url'
-                          : 'Url: Unknown',style: const TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),),
-                      onPressed: (){
+                      child: Text(
+                        url != null
+                            ? 'This link will explain more details of this news if you want click on it: $url'
+                            : 'Url: Unknown',
+                        style: const TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(

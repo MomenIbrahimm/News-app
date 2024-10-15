@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:news_app/layout/cubit.dart';
-import 'package:news_app/layout/state.dart';
 import 'package:news_app/share/components/components.dart';
+
+import '../features/layout/presentation/logic/cubit.dart';
+import '../features/layout/presentation/logic/state.dart';
 import '../share/style/const.dart';
 
 class SearchScreen extends StatelessWidget {

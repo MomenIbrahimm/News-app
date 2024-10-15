@@ -2,7 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
-import 'package:news_app/modules/details_screen.dart';
+import 'package:intl/intl.dart';
+import 'package:news_app/features/business/data/model/business_model.dart';
 import 'package:news_app/share/style/style.dart';
 
 int currentIndex = 1;
@@ -32,7 +33,9 @@ Widget switchTab() {
   );
 }
 
-Widget buildArticlesItem(article, context, {String text = 'details'}) {
+Widget buildArticlesItem(Articles model, context, {String text = 'details'}) {
+  var time = DateFormat.yMMMd().format(DateTime.parse(model.publishedAt!));
+
   return Column(
     children: [
       Padding(
@@ -40,32 +43,40 @@ Widget buildArticlesItem(article, context, {String text = 'details'}) {
         child: Row(
           children: [
             Expanded(
-                child: Text(
-              'Author: ${article['author'] ?? 'Unknown'}',
-              maxLines: 1,
-            )),
+              child: Text(
+                'Author: ${model.author ?? 'Unknown'}',
+                maxLines: 1,
+              ),
+            ),
             const Spacer(),
-            Text('${article['publishedAt']}'),
+            Text(time),
           ],
         ),
       ),
       CachedNetworkImage(
-        placeholder: (context,url)=> const Center(child: CircularProgressIndicator()),
-          errorWidget: (context,url,error)=>  Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('Failed to load image check your internet',style: TextStyle(fontSize: 12.0,color: Colors.red),),
-              Icon(Icons.error,size: 25.0,color: Colors.red,)
-            ],
-          ),
+          placeholder: (context, url) => const SizedBox.shrink(),
+          errorWidget: (context, url, error) => const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Failed to load image check your internet',
+                    style: TextStyle(fontSize: 12.0, color: Colors.red),
+                  ),
+                  Icon(
+                    Icons.error,
+                    size: 25.0,
+                    color: Colors.red,
+                  )
+                ],
+              ),
           cacheManager: CacheManager(
             Config(
               'customCacheKey',
               stalePeriod: const Duration(days: 7),
             ),
           ),
-          imageUrl:
-              '${article['urlToImage'] ?? 'https://media.istockphoto.com/id/1390033645/photo/world-news-background-which-can-be-used-for-broadcast-news.jpg?b=1&s=170667a&w=0&k=20&c=glqFWZtWU4Zqyxd8CRu5_Or81zqwe7cyhturXaIFEOA='}'),
+          imageUrl: model.urlToImage ??
+              'https://media.istockphoto.com/id/1390033645/photo/world-news-background-which-can-be-used-for-broadcast-news.jpg?b=1&s=170667a&w=0&k=20&c=glqFWZtWU4Zqyxd8CRu5_Or81zqwe7cyhturXaIFEOA='),
       const SizedBox(
         height: 5.0,
       ),
@@ -74,7 +85,7 @@ Widget buildArticlesItem(article, context, {String text = 'details'}) {
         child: Row(
           children: [
             Expanded(
-              child: Text('${article['title']}',
+              child: Text('${model.title}',
                   style: aBeeZee, overflow: TextOverflow.ellipsis, maxLines: 2),
             ),
             const SizedBox(
@@ -87,7 +98,7 @@ Widget buildArticlesItem(article, context, {String text = 'details'}) {
                   elevation: 5.0,
                   color: Colors.blueGrey,
                   onPressed: () {
-                    Navigator.push(
+                    /*  Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => DetailsScreen(
@@ -98,9 +109,12 @@ Widget buildArticlesItem(article, context, {String text = 'details'}) {
                                   publishDate: article['publishedAt'],
                                   url: article['url'],
                                   image: article['urlToImage'],
-                                )));
+                                )));*/
                   },
-                  child: Text(text,style: const TextStyle(color: Colors.white),),
+                  child: Text(
+                    text,
+                    style: const TextStyle(color: Colors.white),
+                  ),
                 )),
           ],
         ),

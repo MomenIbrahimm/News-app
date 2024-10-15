@@ -1,9 +1,10 @@
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/layout/cubit.dart';
-import 'package:news_app/layout/state.dart';
 import 'package:news_app/share/components/components.dart';
+
+import '../../features/layout/presentation/logic/cubit.dart';
+import '../../features/layout/presentation/logic/state.dart';
 import '../../share/style/const.dart';
 
 class EgyBusinessScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class EgyBusinessScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text(
               'أخبار الأعمال المصرية',
-              style: TextStyle(color: Colors.black,fontSize: 18.0),
+              style: TextStyle(color: Colors.black, fontSize: 18.0),
             ),
             backgroundColor: NewsCubit.get(context).isSwitch ? b : w,
             iconTheme: NewsCubit.get(context).isSwitch
@@ -38,12 +39,14 @@ class EgyBusinessScreen extends StatelessWidget {
             builder: (context) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 40.0,),
+                const SizedBox(
+                  height: 40.0,
+                ),
                 Expanded(
                   child: ListView.separated(
                     itemCount: list.length,
                     itemBuilder: (context, index) =>
-                        buildArticlesItem(list[index], context,text: 'تفاصيل'),
+                        buildArticlesItem(list[index], context, text: 'تفاصيل'),
                     separatorBuilder: (context, index) => myDivider(),
                   ),
                 ),
