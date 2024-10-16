@@ -18,8 +18,7 @@ class NewsApp extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) =>
           AppCubit()..switchButton(fromShared: isSwitch),
-      child: BlocConsumer<AppCubit, AppState>(
-        listener: (context, state) {},
+      child: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,

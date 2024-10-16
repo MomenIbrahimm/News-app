@@ -20,6 +20,7 @@ class SearchListview extends StatelessWidget {
           error: (error) => Text(error),
           loaded: (searchModel) => Expanded(
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               padding: const EdgeInsets.symmetric(vertical: 10),
               itemCount: searchModel.articles!.length,
               itemBuilder: (context, index) {

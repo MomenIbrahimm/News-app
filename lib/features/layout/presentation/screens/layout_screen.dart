@@ -12,6 +12,7 @@ import 'package:news_app/features/sports/data/repo/sports_repo.dart';
 import 'package:news_app/features/sports/presentation/logic/sports_cubit.dart';
 
 import '../../../../core/theming/color_manger.dart';
+import '../../../../core/widgets/show_exit_dialog.dart';
 import '../logic/cubit.dart';
 import '../logic/state.dart';
 
@@ -38,44 +39,49 @@ class LayoutScreen extends StatelessWidget {
       child: BlocConsumer<AppCubit, AppState>(
         listener: (context, state) {},
         builder: (context, state) {
-          return DefaultTabController(
-            length: AppCubit.get(context).screens.length,
-            child: Scaffold(
-              backgroundColor: AppCubit.get(context).isSwitch
-                  ? ColorManger.black
-                  : ColorManger.white,
-              appBar: AppBar(
-                /*       actions: [
-                  IconButton(
-                    onPressed: () {
-                      NewsCubit.get(context).switchButton();
-                    },
-                    icon: Icon(
-                      Icons.nightlight,
-                      color: !NewsCubit.get(context).isSwitch
-                          ? ColorManger.black
-                          : ColorManger.white,
-                    ),
-                  )
-                ],*/
-                title: Container(
-                    color: Colors.black12,
-                    child: Text(
-                      'News all over the world',
-                      style: TextStyle(fontSize: size),
-                    )),
-                bottom: const TabBar(
-                  indicatorColor: ColorManger.white,
-                  tabs: [
-                    CustomTab(icon: Ionicons.business, text: 'Business'),
-                    CustomTab(icon: Ionicons.body, text: 'Sports'),
-                    CustomTab(icon: Ionicons.thermometer, text: 'Science'),
-                    CustomTab(icon: Ionicons.search, text: 'Search'),
-                  ],
+          return WillPopScope(
+            onWillPop: () async {
+              return await showExitDialog(context);
+            },
+            child: DefaultTabController(
+              length: AppCubit.get(context).screens.length,
+              child: Scaffold(
+                backgroundColor: AppCubit.get(context).isSwitch
+                    ? ColorManger.black
+                    : ColorManger.white,
+                appBar: AppBar(
+                  /*       actions: [
+                    IconButton(
+                      onPressed: () {
+                        NewsCubit.get(context).switchButton();
+                      },
+                      icon: Icon(
+                        Icons.nightlight,
+                        color: !NewsCubit.get(context).isSwitch
+                            ? ColorManger.black
+                            : ColorManger.white,
+                      ),
+                    )
+                  ],*/
+                  title: Container(
+                      color: Colors.black12,
+                      child: Text(
+                        'News all over the world',
+                        style: TextStyle(fontSize: size),
+                      )),
+                  bottom: const TabBar(
+                    indicatorColor: ColorManger.white,
+                    tabs: [
+                      CustomTab(icon: Ionicons.business, text: 'Business'),
+                      CustomTab(icon: Ionicons.body, text: 'Sports'),
+                      CustomTab(icon: Ionicons.thermometer, text: 'Science'),
+                      CustomTab(icon: Ionicons.search, text: 'Search'),
+                    ],
+                  ),
                 ),
-              ),
-              body: TabBarView(
-                children: AppCubit.get(context).screens,
+                body: TabBarView(
+                  children: AppCubit.get(context).screens,
+                ),
               ),
             ),
           );
